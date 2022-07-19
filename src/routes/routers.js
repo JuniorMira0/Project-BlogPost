@@ -16,9 +16,12 @@ router.post(
 );
 
 router.post(
-  '/user', 
+  '/user',
+  body('email').isEmail(),
   body('displayName').isLength({ min: 8 }),
-  validate.validateDisplayName,
+  body('password').isLength({ min: 6 }),
+  validate.validateUser,
+  validate.validateEmailExist,
   controllerUser,
   );
 

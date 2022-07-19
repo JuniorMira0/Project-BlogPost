@@ -7,7 +7,7 @@ const controllerUser = async (req, res) => {
   await User.create({ displayName, email, password, image });
 
   const token = createToken(email);
-  return res.status(200).json({ token });
+  return res.status(201).json({ token });
 };
 
 module.exports = controllerUser;
