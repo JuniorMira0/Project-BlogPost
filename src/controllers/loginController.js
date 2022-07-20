@@ -1,4 +1,4 @@
-const createToken = require('../helpers/jwt');
+const { createToken } = require('../helpers/jwt');
 
 const controllerLogin = async (req, res) => {
   const { email } = req.body;
