@@ -17,6 +17,14 @@ router.post(
 );
 
 router
+.route('/user/:id')
+.get(
+  jwt.verifyToken,
+  validate.validateUserId,
+  controller.getUserId,
+);
+
+router
 .route('/user')
 .get(
   jwt.verifyToken,

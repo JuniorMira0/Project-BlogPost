@@ -11,16 +11,20 @@ const controllerUser = async (req, res) => {
 };
 
 const getUsers = async (_req, res) => {
-  try {
     const users = await User.findAll({ attributes: { exclude: 'password' } });
   
     return res.status(200).json(users);
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
+};
+
+const getUserId = async (req, res) => {
+  const { id } = req.params;
+
+  const user = await User.findOne({ where: { id }, attributes: { exclude: 'password' } });
+  return res.status(200).json(user);
 };
 
 module.exports = {
   controllerUser,
   getUsers,
+  getUserId,
 };
