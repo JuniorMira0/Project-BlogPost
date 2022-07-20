@@ -1,4 +1,4 @@
-const createToken = require('../helpers/jwt');
+const { createToken } = require('../helpers/jwt');
 const { User } = require('../database/models');
 
 const controllerUser = async (req, res) => {
