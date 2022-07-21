@@ -1,6 +1,5 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Categories = sequelize.define('Category', {
+const Categories = (sequelize, DataTypes) => {
+  const Category = sequelize.define('Category', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -13,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, 
   {
+    timestamps: false,
     tableName: 'Categories'
   });
-  return Categories;
+  return Category;
 }; 
+
+module.exports = Categories;

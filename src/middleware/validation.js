@@ -66,10 +66,22 @@ const validateUserId = async (req, res, next) => {
   next();
 };
 
+const validateCategoryName = (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res
+      .status(400)
+      .json({ message: '"name" is required' });
+  }
+  next();
+};
+
 module.exports = {
   validateFields,
   validateLogin,
   validateUser,
   validateEmailExist,
   validateUserId,
+  validateCategoryName,
 };

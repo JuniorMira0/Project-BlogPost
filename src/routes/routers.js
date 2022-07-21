@@ -4,6 +4,7 @@ const controllerLogin = require('../controllers/loginController');
 const controller = require('../controllers/userController');
 const validate = require('../middleware/validation');
 const jwt = require('../helpers/jwt');
+const { createCategories } = require('../controllers/categoriesController');
 
 const router = express.Router();
 
@@ -38,5 +39,14 @@ router
   validate.validateEmailExist,
   controller.controllerUser,
   );
+
+router
+.route('/categories')
+.post(
+  body('name').isLength({ min: 1 }),
+  jwt.verifyToken,
+  validate.validateCategoryName,
+  createCategories,
+);
 
 module.exports = router;
