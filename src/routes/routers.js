@@ -4,7 +4,7 @@ const controllerLogin = require('../controllers/loginController');
 const controller = require('../controllers/userController');
 const validate = require('../middleware/validation');
 const jwt = require('../helpers/jwt');
-const { createCategories } = require('../controllers/categoriesController');
+const { createCategories, getCategories } = require('../controllers/categoriesController');
 
 const router = express.Router();
 
@@ -47,6 +47,10 @@ router
   jwt.verifyToken,
   validate.validateCategoryName,
   createCategories,
+)
+.get(
+  jwt.verifyToken,
+  getCategories,
 );
 
 module.exports = router;
