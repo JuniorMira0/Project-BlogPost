@@ -1,5 +1,5 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
+const PostCategories = (sequelize, DataTypes) => {
   const PostCategory = sequelize.define('PostCategory', {
     postId: {
       type: DataTypes.INTEGER,
@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     },  
   }, 
   {
-    tableName: 'PostCategory'
+    timestamps: false,
+    tableName: 'PostCategories'
   });
 
   PostCategory.associate = (models) => {
@@ -41,3 +42,5 @@ module.exports = (sequelize, DataTypes) => {
   
   return PostCategory;
 };
+
+module.exports = PostCategories;

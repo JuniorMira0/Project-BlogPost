@@ -1,15 +1,17 @@
 const express = require('express');
 const { body } = require('express-validator');
-const controllerLogin = require('../controllers/loginController');
 const controller = require('../controllers/userController');
+const controllerLogin = require('../controllers/loginController');
+const { createCategories, getCategories } = require('../controllers/categoriesController');
+const { getPost } = require('../controllers/postController');
 const validate = require('../middleware/validation');
 const jwt = require('../helpers/jwt');
-const { createCategories, getCategories } = require('../controllers/categoriesController');
 
 const router = express.Router();
 
-router.post(
-  '/login',
+router
+.route('/login')
+.post(
   body('email').isEmail(),
   body('password').isLength({ min: 5 }),
   validate.validateFields,
@@ -51,6 +53,13 @@ router
 .get(
   jwt.verifyToken,
   getCategories,
+);
+
+router
+.route('/post')
+.get(
+  jwt.verifyToken,
+  getPost,
 );
 
 module.exports = router;
