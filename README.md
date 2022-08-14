@@ -24,3 +24,4 @@ Todo o processo de desenvolvimento foi feito com NodeJS com o auxílio da biblio
 - Desenvolver as relações 1:1, 1:N e N:N através do Sequelize.
 
 ---
+** Projeto desenvolvido para fins de estudos durante minha formação na Trybe.
